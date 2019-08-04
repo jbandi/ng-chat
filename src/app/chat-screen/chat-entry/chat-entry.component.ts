@@ -3,8 +3,11 @@ import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '
 @Component({
   selector: 'app-chat-entry',
   template: `
-      <input #entryText (keyup.enter)="onAddEntry(entryText.value)"/>
-      <button (click)="onAddEntry(entryText.value)">
+      <input #entryText
+             (keyup.enter)="onAnswer(entryText.value)"
+             placeholder="Type your answer ..."
+      />
+      <button (click)="onAnswer(entryText.value)">
           <i class="fas fa-paper-plane"></i>
       </button>
   `,
@@ -13,22 +16,21 @@ import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '
 export class ChatEntryComponent implements OnInit {
 
   @ViewChild('entryText', {static: true}) entryInput: ElementRef;
-  @Output() addEntry = new EventEmitter<string>();
+  @Output() addAnswer = new EventEmitter<string>();
 
   constructor() {
   }
 
   ngOnInit() {
     // setInterval(() => {
-    //   this.addEntry.next(new Date().toISOString());
+    //   this.addAnswer.next(new Date().toISOString());
     // }, 4000);
   }
 
-
-  onAddEntry(entryText: string) {
-    console.log('ViewChild', this.entryInput.nativeElement.value);
-    console.log('Value', entryText);
-    this.addEntry.next(entryText);
-    this.entryInput.nativeElement.value = '';
+  onAnswer(answerText: string) {
+    if (answerText) {
+      this.addAnswer.next(answerText);
+      this.entryInput.nativeElement.value = '';
+    }
   }
 }
