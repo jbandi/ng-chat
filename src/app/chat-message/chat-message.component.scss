@@ -1,0 +1,16 @@
+p {
+  display: inline-block;
+  padding: 8px 12px;
+  border-radius: 12px;
+  margin: 5px;
+}
+
+.leftBubble {
+  background: whitesmoke;
+  border-bottom-left-radius: 2px;
+}
+
+.rightBubble {
+  background: lightgreen;
+  border-bottom-right-radius: 2px;
+}
