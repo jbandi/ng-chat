@@ -7,6 +7,8 @@ import { ChatListComponent } from './chat-screen/chat-list/chat-list.component';
 import { ChatMessageComponent } from './chat-screen/chat-message/chat-message.component';
 import { ChatMessageProgressComponent } from './chat-screen/chat-message-progress/chat-message-progress.component';
 import { ChatEntryComponent } from './chat-screen/chat-entry/chat-entry.component';
+import { ChatEntryTextComponent } from './chat-screen/chat-entry-text/chat-entry-text.component';
+import { ChatEntryOptionsComponent } from './chat-screen/chat-entry-options/chat-entry-options.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { ChatEntryComponent } from './chat-screen/chat-entry/chat-entry.componen
     ChatMessageComponent,
     ChatMessageProgressComponent,
     ChatEntryComponent,
-    ChatScreenComponent
+    ChatScreenComponent,
+    ChatEntryTextComponent,
+    ChatEntryOptionsComponent
   ],
   imports: [
     BrowserModule

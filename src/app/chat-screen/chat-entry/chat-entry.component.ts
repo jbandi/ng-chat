@@ -1,36 +1,27 @@
 import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import { ChatService } from '../chat.service';
 
 @Component({
   selector: 'app-chat-entry',
   template: `
-      <input #entryText
-             (keyup.enter)="onAnswer(entryText.value)"
-             placeholder="Type your answer ..."
-      />
-      <button (click)="onAnswer(entryText.value)">
-          <i class="fas fa-paper-plane"></i>
-      </button>
+    <ng-container [ngSwitch]="questionType">
+        <app-chat-entry-options *ngSwitchCase="'choice'" [options]="options"></app-chat-entry-options>
+        <app-chat-entry-text *ngSwitchDefault></app-chat-entry-text>
+    </ng-container>
   `,
   styleUrls: ['./chat-entry.component.scss']
 })
-export class ChatEntryComponent implements OnInit {
+export class ChatEntryComponent {
 
-  @ViewChild('entryText', {static: true}) entryInput: ElementRef;
-  @Output() addAnswer = new EventEmitter<string>();
 
-  constructor() {
+  constructor(private chatService: ChatService) {
   }
 
-  ngOnInit() {
-    // setInterval(() => {
-    //   this.addAnswer.next(new Date().toISOString());
-    // }, 4000);
+  get questionType() {
+    return this.chatService.currentQuestion.questionType;
   }
 
-  onAnswer(answerText: string) {
-    if (answerText) {
-      this.addAnswer.next(answerText);
-      this.entryInput.nativeElement.value = '';
-    }
+  get options() {
+    return this.chatService.currentQuestion.options;
   }
 }

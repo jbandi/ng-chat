@@ -1,0 +1,17 @@
+:host {
+  display: flex;
+  flex: 0 1 auto;
+  width: 100%;
+  min-height: 60px;
+}
+
+button {
+  flex-grow: 1;
+  height: 100%;
+  font-size: medium;
+  border-radius: 1px;
+  background: lightyellow;
+  border-color: #00000014;
+  border-style: solid;
+  border-width: 1px;
+}
