@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ChatService } from '../chat.service';
 
 @Component({
@@ -14,7 +14,7 @@ import { ChatService } from '../chat.service';
   `,
   styleUrls: ['./chat-entry-text.component.scss']
 })
-export class ChatEntryTextComponent implements OnInit {
+export class ChatEntryTextComponent implements OnInit, AfterViewInit {
 
   @ViewChild('entryText', {static: true}) entryInput: ElementRef;
 
@@ -28,4 +28,10 @@ export class ChatEntryTextComponent implements OnInit {
       this.entryInput.nativeElement.value = '';
     }
   }
+
+  ngAfterViewInit(): void {
+    this.entryInput.nativeElement.focus();
+  }
+
+
 }
