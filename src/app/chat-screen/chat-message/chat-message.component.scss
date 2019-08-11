@@ -7,10 +7,57 @@ p {
 
 .leftBubble {
   background: whitesmoke;
-  border-bottom-left-radius: 2px;
+  //border-bottom-left-radius: 2px;
 }
 
 .rightBubble {
   background: lightgreen;
-  border-bottom-right-radius: 2px;
+  //border-bottom-right-radius: 2px;
+}
+
+.leftBubble:before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  bottom: -6px;
+  left: 14px;
+  height: 20px;
+  width: 20px;
+  background: #f5f5f5;
+  border-bottom-right-radius: 15px;
+}
+.leftBubble:after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  bottom: -6px;
+  left: 7px;
+  width: 12px;
+  height: 11px;
+  background: #f1ffff;
+  border-bottom-right-radius: 16px;
+}
+
+.rightBubble:before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  bottom: -6px;
+  right: 10px;
+  height: 20px;
+  width: 20px;
+  background: lightgreen;
+  background-attachment: fixed;
+  border-bottom-left-radius: 15px;
+}
+.rightBubble:after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  bottom: -5px;
+  right: 5px;
+  width: 12px;
+  height: 11px;
+  background: azure;
+  border-bottom-left-radius: 10px;
 }
